@@ -31,6 +31,8 @@ getColors(src).then(colors => {
   
   // `colors` is an array of color objects
 const color = colors.map(color => color.hex())
+  
+  setTimeout(()=>{
   fs.unlinkSync(src);
   console.log("delete file",src)
   },0)

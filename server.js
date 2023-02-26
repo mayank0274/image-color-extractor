@@ -16,25 +16,10 @@ const multerStorage = multer.diskStorage({
     cb(null, name);
   }
 })
-/*
-// Multer Filter
-const multerFilter = (req, file, cb) => {
-  if (file.mimetype.split("/")[1] === "jpg") {
-    cb(null, true);
-  } else {
-    cb(new Error("Not a PDF File!!"), false);
-  }
-};
-*/
+
 const upload = multer({
   storage: multerStorage
- // fileFilter: multerFilter
 })
-
-app.get("/m",(req,res)=>{
-  return res.json("ok")
-})
-
 
 app.post("/getColor",upload.single("file"),(req,res)=>{
  // res.send("okay")
@@ -46,11 +31,12 @@ getColors(src).then(colors => {
   
   // `colors` is an array of color objects
 const color = colors.map(color => color.hex())
+  fs.unlinkSync(src);
+  console.log("delete file",src)
+  },0)
   return res.json(color)
 })
 .catch((err) => {return res.json(err)})
-
-fs.unlinkSync(src);
 })
 
 

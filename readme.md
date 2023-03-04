@@ -14,6 +14,6 @@ This image color extract api build using nodeJs helps you to extract color from 
 
 Make a post request at this url with your image:-
 
-https://image-color-extractor-a84a.onrender.com/getColor
+https://image-color-extractor-rnue.onrender.com/getColor
 
 You will get a colours array as response
